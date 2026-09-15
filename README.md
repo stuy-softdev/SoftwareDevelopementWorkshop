@@ -1,4 +1,4 @@
 ## Workshop
-# FRIST LSAT
-## sidekick: DUCKIENAME
+# Saxon Rassner
+## sidekick: Liberty
 ### SoftDev 2026-2027
