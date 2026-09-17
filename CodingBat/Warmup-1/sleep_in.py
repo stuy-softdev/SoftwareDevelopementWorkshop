@@ -3,7 +3,7 @@
 # SoftDev
 # K11 -- Reviewing python basics
 # 2026-09-18f
-# time spent:
+# time spent: 0.17hr
 
 def sleep_in(weekday, vacation):
     return not weekday or vacation
