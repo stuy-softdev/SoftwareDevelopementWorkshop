@@ -7,10 +7,11 @@ jacob spitzer
 
  - The randint function
  - open(filename, mode)
+ - python list append(), pop()
 
 # QUESTIONS/COMMENTS/CONCERNS
 
-no
+Is there a way to get a file as string without the extra newline?
 
 # MOST USEFUL RESOURCES
 
