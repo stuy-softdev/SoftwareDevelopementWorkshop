@@ -1,9 +1,8 @@
-# Dustin Lin
-# Triple T Trio
+# Saxon Rassner
+# Strawberry Shortcake
 # SoftDev
 # K14 -- Grab bag
 # 2026-09-23r
-# time spent: 0.2
 
 import random
 
