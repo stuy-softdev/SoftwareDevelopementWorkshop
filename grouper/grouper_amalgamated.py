@@ -3,7 +3,6 @@
 # SoftDev
 # K16 -- Grab Bag, Quacking Edition
 # 2026-09-28m
-# time spent: 0.2
 
 import random
 
