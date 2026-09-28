@@ -1,8 +1,9 @@
-# Saxon Rassner
-# Strawberry Shortcake
+# Dustin Lin
+# Triple T Trio
 # SoftDev
-# K14 -- Grab bag
-# 2026-09-23r
+# K16 -- Grab Bag, Quacking Edition
+# 2026-09-28m
+# time spent: 0.2
 
 import random
 
@@ -16,7 +17,7 @@ alphanumeric ordering.
     4. We then selected the teams by index:
     (team1 consists of the 1st person in group0, the 1st person in group1, the 1st person in group2,
     team2 consists of the 2nd person in group0, the 2nd person in group1, the 2nd person in group2,
-   
+    
 """"""
 HOW WE SANITIZE DATA:
     We basically just remove the newline at the end and call it a day
@@ -34,7 +35,7 @@ def splitLine(content):
     return content.split("\n")
 
 # read the given plaintext file,
-cont = readFile("handles_gh")
+cont = readFile("handles_gh.csv")
 
 # split the entries using critera of your choosing (height),
 splitted = splitLine(cont)
@@ -54,7 +55,7 @@ for index, line in enumerate(splitted):
 # shuffle
 for group in groups:
     random.shuffle(group)
-   
+    
 """print groups"""
 print("GROUPS:")
 for group in groups:
@@ -67,7 +68,7 @@ and then shuffle the 3 groups at the end to satisfy the "Each run of your script
 
 def splitTeams(nList, m):
     names = nList.copy()
-   
+    
     length = len(names)
    
     if length < 1 or m < 1:
@@ -96,3 +97,4 @@ def splitTeams(nList, m):
 
 
 print(splitTeams(splitted, 3))
+
