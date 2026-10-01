@@ -6,94 +6,150 @@
 
 import random
 
-"""
-SEPERATION CRITERIA + APPROACH:
-    1. We sorted by alphanumberic order (done by .find() with the first character of each handle on a string going from low to high). We
-used this approach since the normal .sort() on the list places all uppercase characters before lowercase ones, and we wanted a custom
-alphanumeric ordering.
-    2. We split up this sorted list into thirds (first third, middle third, and last third). This was done with a table lookup.
-    3. We then shuffled the groups in order to satisfy the randomized seperation requirement
-    4. We then selected the teams by index:
-    (team1 consists of the 1st person in group0, the 1st person in group1, the 1st person in group2,
-    team2 consists of the 2nd person in group0, the 2nd person in group1, the 2nd person in group2,
-    
-""""""
-HOW WE SANITIZE DATA:
-    We basically just remove the newline at the end and call it a day
-"""
+tribeExplanation = """SEPARATION CRITERIA + APPROACH:
+    1. We sorted the devos by alphanumeric order (done by .find() with the first character of each
+name on a string going from low to high). We used this approach since the normal .sort() places all
+uppercase characters before lowercase ones, and we wanted a custom alphanumeric ordering.
+    2. We split this sorted list into thirds (first third, middle third, and last third). If the total
+isn't divisible by 3, the first tribe(s) get one extra person, so sizes differ by at most 1.
+    3. Each devo is stored with their ducky as a devo:ducky pair, so no duckie is orphaned."""
 
-# Reads a file and returns the content as a string
-def readFile(filename):
+teamExplanation = """TEAM APPROACH:
+    1. We shuffled each tribe so the teams are random on every run.
+    2. Team 1 is the 1st person of tribe 1, tribe 2, and tribe 3; team 2 is the 2nd person of each; and so on.
+So no team has more than 1 member from any tribe.
+    3. If the number of devos isn't divisible by 3, the leftovers form teams of 2 (always fewer than 3 of
+them), which are printed at the bottom. Each duckie is shown next to its devo."""
+
+sanitizeExplanation = """HOW WE SANITIZE DATA:
+    We remove the header line, remove any blankspace, and add (2) in the keys for duplicate names"""
+
+# Reads a file and returns the content as a list of string lines
+def readAndSplitFile(filename):
     file = open(filename, 'r')
-    content = file.read()
+    content = file.read().strip() # turn file into a list of individual lines
     file.close()
-    return content[:-1]
-
-# Splits the given string by newlines and returns the result as a list
-def splitLine(content):
-    return content.split("\n")
+    lines = content.split("\n")
+    lines.pop(0) # remove header line  
+    return lines
 
 # read the given plaintext file,
-cont = readFile("handles_gh.csv")
+lines = readAndSplitFile("handles_w_quackers.csv")
 
-# split the entries using critera of your choosing (height),
-splitted = splitLine(cont)
+# Creates one dictionary from the string returned from readAndSplitFile
+def createDictionary(lines):
+    pairs = {}
+    for line in lines:
+        if line.strip() == "":
+            continue
+        print(repr(line))
+        parts = line.split(",", 1) # split individual line into devo and ducky
+        devo = parts[0].strip()
+        ducky = parts[1].strip()
+        if devo in pairs:
+            devo = devo + " (2)" # For the 2 andrews and ivans
+        pairs[devo] = ducky
+    return pairs
 
-teamSize:float = len(splitted) / 3
-groups:list[list[str]] = [[], [], []]
-
-"""process into groups"""
-# sort by alphanumeric order
+pairs = createDictionary(lines)
 ALPHANUMERIC_ORDER:str = "0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-splitted.sort(key = lambda s: ALPHANUMERIC_ORDER.find(s[:1]))
 
-# split into groups
-for index, line in enumerate(splitted):
-    groups[int(index / teamSize)].append(line)
+# sort dictionary
+def sortPairs(devo):
+    return ALPHANUMERIC_ORDER.find(devo[:1])
 
-# shuffle
-for group in groups:
-    random.shuffle(group)
+# split dictionary into 3 tribes with a maximum difference of 1 in size
+def splitPairsIntoTribes(pairs):
+    tribes = []
+    names = []
+    for devo in pairs:
+        names.append(devo)
     
-"""print groups"""
-print("GROUPS:")
-for group in groups:
-    print(group, len(group))
-
-print("""
-    We decided to sort the lists by alphanumeric order, and then split the first third, second third, and last third into seperate groups,
-and then shuffle the 3 groups at the end to satisfy the "Each run of your script should produce new random selections" part of the requirements.
-""")
-
-def splitTeams(nList, m):
-    names = nList.copy()
+    names.sort(key = sortPairs)
+    total = len(names)
+    baseSize = total // 3
+    size1 = baseSize
+    size2 = baseSize
+    size3 = baseSize
+    additionalTribe = total % 3
+    if (additionalTribe >= 1):
+        size1 += 1
+    if (additionalTribe >= 2):
+        size2 += 1
+        
+    tribe1 = {}
+    tribe2 = {}
+    tribe3 = {}
     
-    length = len(names)
-   
-    if length < 1 or m < 1:
-        return names
-   
-    names.sort(key=len)
+    
+    for index, devo in enumerate(names):
+        if (index < size1):
+            tribe1[devo] = pairs[devo]
+        elif (index < size1 + size2):
+            tribe2[devo] = pairs[devo]
+        else:
+            tribe3[devo] = pairs[devo]
+    
+    return [tribe1, tribe2, tribe3]
+
+tribes = splitPairsIntoTribes(pairs)
+tribe1 = tribes[0]
+tribe2 = tribes[1]
+tribe3 = tribes[2]
+
+def makeTeams(tribe1, tribe2, tribe3):
+    names1 = []
+    for devo in tribe1:
+        names1.append(devo)
+    names2 = []
+    for devo in tribe2:
+        names2.append(devo)
+    names3 = []
+    for devo in tribe3:
+        names3.append(devo)
+        
+    # randomize devos in each tribe
+    random.shuffle(names1)
+    random.shuffle(names2)
+    random.shuffle(names3)
+    smallest = len(names3)
+    
     teams = []
-    remainder = length % m
-    for i in range(0, length - remainder, m):
-        teams.append(names[i:i + m])
-
-    #if there is one person left out
-    if remainder == 1:
-        #takes a person from the last team,
-        lastTeam = teams.pop()
-        #creates the last team without the person and adds it to the list
-        teams.append(lastTeam[:-1])
-        #create a new team with that person and the leftover person and adds it to the list
-   
-        teams.append([lastTeam[-1]] + names[length - 1:])
-       
-    #put leftover people into a group if remainder is 2 or more.
-    elif remainder > 0:
-        teams.append(names[length - remainder:])
+    
+    for i in range(smallest):
+        team = [names1[i] +  ": " + tribe1[names1[i]], names2[i] +  ": " + tribe2[names2[i]], names3[i] +  ": " + tribe3[names3[i]]]
+        teams.append(team)
+        
+    extra = -3 * smallest + len(names1) + len(names2) + len(names3)
+    
+    # add extra team if 2 left over
+    if (extra == 2):
+        teams.append([names1[smallest] +  ": " + tribe1[names1[smallest]], names2[smallest] +  ": " + tribe2[names2[smallest]]])
+    # If only one devo remains remove the last team and combine devos such that their tribes don't overlap
+    if (extra == 1):
+        finalTeam = teams.pop()
+        single = names1[smallest] + ": " + tribe1[names1[smallest]]
+        teams.append(single, finalTeam[1])
+        teams.append(finalTeam[0], finalTeam[2])
+    
     return teams
+    
+# make teams
+teams = makeTeams(tribe1, tribe2, tribe3)
 
+# print explanations
+print(tribeExplanation)
+print(teamExplanation)
+print(sanitizeExplanation)
 
-print(splitTeams(splitted, 3))
+# print tribes
 
+print("Tribe 1: ", tribe1, len(tribe1))
+print("Tribe 2: ", tribe2, len(tribe2))
+print("Tribe 3: ", tribe3, len(tribe3))
+
+# print teams
+
+for index, team in enumerate(teams):
+    print("Team" + str(index) + ":")
+    print(team)
