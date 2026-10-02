@@ -17,21 +17,26 @@ isn't divisible by 3, the first tribe(s) get one extra person, so sizes differ b
 
 teamExplanation = """TEAM APPROACH:
     1. We shuffled each tribe so the teams are random on every run.
-    2. Team 1 is the 1st person of tribe 1, tribe 2, and tribe 3; team 2 is the 2nd person of each; and so on.
-So no team has more than 1 member from any tribe.
-    3. If the number of devos isn't divisible by 3, the leftovers form teams of 2 (always fewer than 3 of
-them), which are printed at the bottom. Each duckie is shown next to its devo."""
+    2. Team 1 is the 1st person of tribe 1, tribe 2, and tribe 3; team 2 is the 2nd person of each; and so on. So no team has more than 1 member from any tribe.
+    3. If the number of devos isn't divisible by 3: If the remainder is 2, then a new team is created.
+    If only 1 devo and duckie remains the last team added is split and the remaining devo and duckie joins another to make two teams of 2."""
 
 sanitizeExplanation = """HOW WE SANITIZE DATA:
     We remove the header line, remove any blankspace, and add (2) in the keys for duplicate names"""
 
+
+csvModuleExplanation = """ csv Module Use:
+    1. When opening the file it was much simpler to digest into a string by using .DictReader
+    2. It also made it much easier to make into a dictionary because it already had a header line labeling the columns devo and duckie
+    3. I used CSV writer to make a csv file that lists every member along with their team and duckie name
+"""
 # Reads a file and returns the content as a list of string lines
 def readAndSplitFile(filename):
     # DANK JE WEL DEVO FAM
     with open(filename, 'r') as file:
-        content = file.read().strip() # turn file into a list of individual lines
-        lines = content.split("\n")
-        lines.pop(0) # remove header line  
+        # DANK JE WEL DEVO FAM
+        content = csv.DictReader(file) # turn file into a list of individual lines
+        lines = list(content)
     return lines
 
 # read the given plaintext file,
@@ -41,13 +46,10 @@ lines = readAndSplitFile("handles_w_quackers.csv")
 def createDictionary(lines):
     pairs = {}
     for line in lines:
-        # DANK JE WEL DEVO FAM
-        if line.strip() == "":
-            continue
-        print(repr(line))
-        parts = line.split(",", 1) # split individual line into devo and ducky
-        devo = parts[0].strip()
-        ducky = parts[1].strip()
+        # Debug line: print(repr(line))
+        # DANK JE WEL DEVO FAM  
+        devo = line["DEVO"].strip()
+        ducky = line["DUCKIE"].strip()
         if devo in pairs:
             devo = devo + " (2)" # For the 2 andrews and ivans
         pairs[devo] = ducky
@@ -111,6 +113,7 @@ def makeTeams(tribe1, tribe2, tribe3):
         names3.append(devo)
         
     # randomize devos in each tribe
+    # DANK JE WEL DEVO FAM  
     random.shuffle(names1)
     random.shuffle(names2)
     random.shuffle(names3)
@@ -131,18 +134,37 @@ def makeTeams(tribe1, tribe2, tribe3):
     if (extra == 1):
         finalTeam = teams.pop()
         single = names1[smallest] + ": " + tribe1[names1[smallest]]
-        teams.append(single, finalTeam[1])
-        teams.append(finalTeam[0], finalTeam[2])
+        teams.append([single, finalTeam[1]])
+        teams.append([finalTeam[0], finalTeam[2]])
     
     return teams
     
 # make teams
 teams = makeTeams(tribe1, tribe2, tribe3)
 
+# DANK JE WEL DEVO FAM  
+# Writes a CSV that lists each member with their team name and duckie
+def writeCSV(teams, filename):
+    # DANK JE WEL DEVO FAM  
+    with open(filename, 'w') as file:
+        # DANK JE WEL DEVO FAM  
+        writer = csv.DictWriter(file, fieldnames = ["TEAM", "DEVO", "DUCKIE"])
+        # DANK JE WEL DEVO FAM  
+        writer.writeheader()
+        # DANK JE WEL DEVO FAM  
+        for index, team in enumerate(teams):
+            for member in team:
+                split = member.split(": ", 1)
+                # DANK JE WEL DEVO FAM  
+                writer.writerow({"TEAM": index, "DEVO": split[0], "DUCKIE": split[1]})
+
+writeCSV(teams, "teams_written.csv")
+    
 # print explanations
 print(tribeExplanation)
 print(teamExplanation)
 print(sanitizeExplanation)
+print(csvModuleExplanation)
 
 # print tribes
 
@@ -152,6 +174,7 @@ print("Tribe 3: ", tribe3, len(tribe3))
 
 # print teams
 
+# DANK JE WEL DEVO FAM  
 for index, team in enumerate(teams):
     print("Team" + str(index) + ":")
     print(team)
