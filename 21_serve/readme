@@ -1,0 +1,24 @@
+# Saxon Rassner
+# Team Name
+# Software Development
+# 10/3/2026
+# K21 -- Would You Like Fries With That?
+
+DISCO:
+<note any discoveries you made here... no matter how small!>
+
+QCC:
+0. Seems similar to constructors in java for making an instance of an object
+1. / is the root directory. It is the top/start of the directory chain
+2. print() occurs in the terminal
+3. It prints app, the name of the file
+4. No hablo queso appears on the website/local server http://127.0.0.1:5000.
+5. app.run() is similar to using built in methods. It is also the same format
+as using functions in java that require instances: instance.functionname()
+
+ ...
+
+INVESTIGATIVE APPROACH:
+<Your concise summary of how
+ you and your team set about
+ "illuminating the cave of ignorance" here...>
