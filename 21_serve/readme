@@ -5,7 +5,7 @@
 # K21 -- Would You Like Fries With That?
 
 DISCO:
-<note any discoveries you made here... no matter how small!>
+- What you print in the function occurs in the terminal only when you reload the server
 
 QCC:
 0. Seems similar to constructors in java for making an instance of an object
@@ -22,3 +22,6 @@ INVESTIGATIVE APPROACH:
 <Your concise summary of how
  you and your team set about
  "illuminating the cave of ignorance" here...>
+ 1. Created venv according to directions from the provided source
+ 2. We copied each directory (v0, v1, ...) one by one and ran the app.py file
+ 3. Answered questions as we went through every file
