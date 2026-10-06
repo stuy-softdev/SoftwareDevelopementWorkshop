@@ -54,13 +54,19 @@ def percent_tester(occupation):
         else:
             print(0)
 
-
-@app.route("/")                 #assign fxn to route
+@app.route("/")            #assign fxn to route
 def get_job():
-    print(__name__)
+    #print(__name__)
     occupations = read_csv()
-    return random_job(occupations)
+    text = f'''
+<b> The Tallyers: Saxon and Rona </b>
+<br>
+Random Job: {random_job(occupations)}
+'''
+    return text
 
+  
 if __name__ == "__main__":      # true if this file NOT imported
     app.debug = True            # enable auto-reload upon code change
     app.run()
+    
