@@ -5,4 +5,4 @@
 - `<br>` for newline in html
 # Questions/Comments/Concerns
 - How does the @app.route("\") work and what exactly does it do?
-- 
+- Main is run because of creating Flask
