@@ -10,7 +10,13 @@
     b. Each key is printed with its actual value from occupations and its value in the tally dictionary divided by 1,000 (100,000/1000 = 100)
 """
 
+from flask import Flask
 import csv, random
+
+app = Flask(__name__)     #create instance of class Flask
+
+
+
 
 def read_csv():
     with open ("occupations.csv", "r") as file:
@@ -48,6 +54,13 @@ def percent_tester(occupation):
         else:
             print(0)
 
-occupations = read_csv()
-#percent_tester(occupations)
-print(random_job(occupations))
+
+@app.route("/")                 #assign fxn to route
+def hello_world():
+    print(__name__)
+    occupations = read_csv()
+    return random_job(occupations)
+
+if __name__ == "__main__":      # true if this file NOT imported
+    app.debug = True            # enable auto-reload upon code change
+    app.run()
