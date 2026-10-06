@@ -56,7 +56,7 @@ def percent_tester(occupation):
 
 
 @app.route("/")                 #assign fxn to route
-def hello_world():
+def get_job():
     print(__name__)
     occupations = read_csv()
     return random_job(occupations)

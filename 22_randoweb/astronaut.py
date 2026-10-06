@@ -1,3 +1,9 @@
+# Saxon Rassner
+# The Tallyers
+# Soft Dev
+# K22 What Will you Be When You Grow Up?
+# 10/6/26
+
 """
 1. Read through the file using csv.DictReader to create a dictionary
 2. Generate a random job
@@ -49,5 +55,5 @@ def percent_tester(occupation):
             print(0)
 
 occupations = read_csv()
-#percent_tester(occupations)
+percent_tester(occupations)
 print(random_job(occupations))
