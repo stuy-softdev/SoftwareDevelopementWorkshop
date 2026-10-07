@@ -58,10 +58,17 @@ def percent_tester(occupation):
 def get_job():
     #print(__name__)
     occupations = read_csv()
+    occupation_list = "<br>"
+    for occupation in occupations.keys():
+        if occupation != "Total":
+            occupation_list += occupation + "<br>"
+        
     text = f'''
 <b> The Tallyers: Saxon and Rona </b>
 <br>
-Random Job: {random_job(occupations)}
+All Occupations: {occupation_list}
+<br>
+<b> Random Job </b>: {random_job(occupations)}
 '''
     return text
 
