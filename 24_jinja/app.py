@@ -1,17 +1,26 @@
-# Clyde 'Thluffy' Sinclair
+# Saxon Rassner
+# The Tallyers
 # Software Development
-# Sep 2026
+# K24 -- Fill in the Blanks (Automagically!)
+# 10/8/2026
+
+"""
+{{ foo }} replaces with the value of foo
+{% for item in collection %} ... {% endfor %} is a for statement
+"""
 
 """
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Q0:
-<your response here>
+Nothing will change for the root route, but the my_foist_template
+route will change (maybe PSOD?)
 
 Q1:
-<your response here>
+http://localhost:5000/my_foist_template
 
 Q2:
-<your response here>
+The first parameter is the template, the other params are the names
+of the fields and sets them equal to a value.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 
