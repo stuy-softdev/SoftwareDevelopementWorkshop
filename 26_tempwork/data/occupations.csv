@@ -1,14 +1,14 @@
-Job Class,Percentage
-Management,6.1
-Business and Financial operations,5
-Computer and Mathematical,2.7
-Architecture and Engineering,1.7
-"Life, Physical and Social Science",0.9
-Community and Social Service,1.6
-Legal,0.8
-"Education, training and library",6.1
-"Arts, design, entertainment, sports and media",1.7
-Healthcare practioners and technical,5.5
+Job Class,Percentage, Link
+Management,6.1,https://www.cloudwards.net/project-management-guide/
+Business and Financial operations,5,https://www.indeed.com/career-advice/finding-a-job/how-to-start-a-career-in-finance
+Computer and Mathematical,2.7,https://www.extern.com/post/what-can-you-do-with-a-math-degree-career-guide
+Architecture and Engineering,1.7,https://start-engineering.com/engineering-career-guide
+"Life, Physical and Social Science",0.9,https://www.indeed.com/career-advice/finding-a-job/bachelors-in-social-science-jobs
+Community and Social Service,1.6,https://communityservice.org/blog/getting-started-with-community-service/
+Legal,0.8,https://www.juriseducation.com/blog/how-to-become-a-lawyer
+"Education, training and library",6.1,https://www.straighterline.com/blog/teacher-career-path-how-to-start-your-career-in-education
+"Arts, design, entertainment, sports and media",1.7,https://jobkash.com/blog/entry-level-media-entertainment-careers-2026
+Healthcare practioners and technical,5.5,https://icohs.edu/entry-level-healthcare-careers/
 Healthcare support,2.8
 Protective service,2.3
 Food preparation and serving,8.3
