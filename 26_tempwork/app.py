@@ -1,4 +1,7 @@
 # The Tallyers: Rona Wassercug, Saxon Rassner and Marcos Lehman
+# Software Developement
+# K26 -- Template for Success
+
 from flask import Flask, render_template
 import csv, random
 
