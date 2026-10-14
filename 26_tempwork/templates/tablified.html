@@ -1,0 +1,33 @@
+<HTML>
+
+<head>
+	<title> K26: Template for Success </title>
+</head>
+
+<body>
+	<h1>Occupations in the USA Data </h1>
+	<br>
+	<h2>The Tallyers: Rona Wassercug, Saxon Rassner, Marcos Lehman </h2>
+	<br> <br>
+	Random Job: {{job}}
+	<br><br>
+
+	<table>
+	<tr>
+	{% for item in headers %}
+		<td> <b>{{ item }}</b> </td>
+	{% endfor %}
+	</tr>
+
+    {% for item in jobs %}
+     <tr>
+		{% for i in range(3)%}
+		<td> {{item[i] | safe }} </td>
+		{% endfor %}
+	 </tr>
+    {% endfor %}
+	</table>
+
+</body>
+
+</HTML>
