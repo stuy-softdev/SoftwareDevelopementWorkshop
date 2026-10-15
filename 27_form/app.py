@@ -70,9 +70,9 @@ def disp_loginpage(): # all referenced printing is in the terminal
 
 #USAGE: Uncomment one version of the decorator at a time
 
-#@app.route("/auth")
+@app.route("/auth")
 #@app.route( "/auth", methods=['GET'] )
-@app.route( "/auth", methods=['POST'] )
+#@app.route( "/auth", methods=['POST'] )
 #@app.route( "/auth", methods=['GET', 'POST'] )
 def authenticate(): # things only printed (still in the terminal) when a username is input and submitted. otherwise the same as disp_loginpage().
     #print("\n\n\n") # prints 3 lines
@@ -91,8 +91,8 @@ def authenticate(): # things only printed (still in the terminal) when a usernam
     # ...for experimenting with
     # home-rolled module importation
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    username = request.args['username']
-    return  username # "Waaaa hooo HAAAH" response to a form submission
+    return request.args['username']
+    # "Waaaa hooo HAAAH" response to a form submission
 
     
 if __name__ == "__main__": #false if this file imported as module
