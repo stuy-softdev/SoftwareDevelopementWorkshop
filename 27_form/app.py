@@ -64,7 +64,7 @@ def disp_loginpage(): # all referenced printing is in the terminal
     # home-rolled module importation
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #print(testmod0.goo()) # prints the string that goo returns in the terminal
-    return render_template( 'login.html' )
+    return render_template( 'login.html' ) + testmod0.goo()
 
 
 
