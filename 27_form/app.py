@@ -91,7 +91,7 @@ def authenticate(): # things only printed (still in the terminal) when a usernam
     # ...for experimenting with
     # home-rolled module importation
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    username = request.form['username']
+    username = request.args['username']
     return  username # "Waaaa hooo HAAAH" response to a form submission
 
     
