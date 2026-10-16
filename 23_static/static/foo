@@ -1,0 +1,24 @@
+this is plaintext. no formatting. just [3 chords and] the truth
+
+Q: What happens when you access this file
+     via
+      http://localhost:5000/static/foo
+
+      ...in the web browser's viewport? -> we predict it will render it as text
+      	result: it did not render it, instead it prompted the user to download the foo file
+      ...in the flask console? -> see the text saying the __name__ of this module is... \n__main__
+      	result: nothing appeared
+      ...anywhere/how else worth noting?
+
+
+NOTA BENE:
+ Keep yourself honest by
+   jotting down or verbalizing
+     to your neighbourhood Devos+Duckies your prediction
+       --- BEFORE you run your test.
+
+
+
+https://ukulelemagazine.com/lessons/uke-lesson-3-chords-and-the-truth-country-songwriting-legend-harlan-howard
+
+https://en.wikipedia.org/wiki/Ramones
