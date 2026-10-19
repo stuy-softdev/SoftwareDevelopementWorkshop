@@ -1,0 +1,30 @@
+#pond {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#pond {
+  display: flex;
+  justify-content: center
+}
+
+#pond {
+  display: flex;
+  justify-content: space-around
+}
+
+#pond {
+  display: flex;
+  justify-content: space-between
+}
+
+#pond {
+  display: flex;
+  align-items: flex-end
+}
+
+#pond {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
