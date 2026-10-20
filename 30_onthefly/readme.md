@@ -1,154 +1,226 @@
-# The Tallyers: Saxon, Rona, and Marcos
-# Software Development
-# K30 -- Who Do Forms Work For?
-# 10/19/2026
-#1pond {
+**The Tallyers: Saxon, Rona, and Marcos**
+
+**Software Development**
+
+**K30 -- Who Do Forms Work For?**
+
+**10/19/2026**
+
+## QUESTION, COMMENTS, CONCERNS
+ - The href link requires a path, so need to include ```static/mimic.css```
+
+## Flexbox Froggy
+**1**
+```
+#pond {
   display: flex;
   justify-content: flex-end;
 }
+```
 
-#2pond {
+**2**
+```
+#pond {
   display: flex;
-  justify-content: center
+  justify-content: center;
 }
+```
 
-#3pond {
+**3**
+```
+#pond {
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
 }
+```
 
-#4pond {
+**4**
+```
+#pond {
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
+```
 
-#5pond {
+**5**
+```
+#pond {
   display: flex;
-  align-items: flex-end
+  align-items: flex-end;
 }
+```
 
-#6pond {
+**6**
+```
+#pond {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+```
 
-#7pond {
+**7**
+```
+#pond {
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
 }
+```
 
-#8pond {
+**8**
+```
+#pond {
   display: flex;
   flex-direction: row-reverse;
 }
+```
 
-#9pond {
+**9**
+```
+#pond {
   display: flex;
   flex-direction: column;
 }
+```
 
-#10pond {
+**10**
+```
+#pond {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
+```
 
-#11pond {
+**11**
+```
+#pond {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
+```
 
-#12pond {
+**12**
+```
+#pond {
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
 }
+```
 
-#13pond {
+**13**
+```
+#pond {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   align-items: flex-end;
 }
+```
 
-#p14ond {
+**14**
+```
+#pond {
   display: flex;
 }
 
-.yellow {
-  order: 2;
+.yellow{
+  order: 1;
 }
+```
 
-#15pond {
+**15**
+```
+#pond {
   display: flex;
 }
 
-.red {
-  order: -1;
+.red{
+  order: -1
+}
+```
+
+**16**
+```
+#pond {
+  display: flex;
+  align-items: flex-start;
 }
 
-#16pond {
+.yellow{
+  align-self: flex-end;
+}
+```
+
+**17**
+```
+#pond {
   display: flex;
   align-items: flex-start;
 }
 
 .yellow {
+  order: 1;
   align-self: flex-end;
 }
+```
 
-#17pond {
-  display: flex;
-  align-items: flex-start;
-}
-
-.yellow {
-  order: 2;
-  align-self: flex-end;
-}
-
-#18pond {
+**18**
+```
+#pond {
   display: flex;
   flex-wrap: wrap;
 }
+```
 
-#19pond {
+**19**
+```
+#pond {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
+```
 
-#20pond {
+**20**
+```
+#pond {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
 }
+```
 
-#21pond {
+**21**
+```
+#pond {
   display: flex;
-  flex-wrap: wrap;
   align-content: flex-start;
 }
+```
 
-#22pond {
+**22**
+```
+#pond {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-end;
 }
+```
 
-#23pond {
+**23**
+```
+#pond {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column-reverse;
-  align-content: center;
-}
 
-#24pond {
-  display: flex;
-  justify-content: center;
-  flex-direction: column-reverse;
-  flex-wrap: wrap-reverse;
-  align-content: space-between;
 }
+```
+
+**24**
+```
+#pond {
+  display: flex;
+}
+```
