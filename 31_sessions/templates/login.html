@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+
+<html>
+
+  <head>
+    <title> LOGIN PAGE </title>
+  </head>
+
+  <body>
+    <h1>
+      The Tallyers
+    </h1>
+	<br>
+	Saxon Rassner, Rona Wassercug, Marcos Lehman
+
+    <h3>
+      To log in enter your credentials below.
+    </h3>
+	</h5>
+		Username:
+	</h5>
+    <form action="/auth/login">
+      <input type="text" name="username">
+	<br>
+	</h5>
+		Password:
+	</h5>
+	<br>
+      <input type="text" name="password">
+	<br>
+	<form action="/auth">
+		<input type="submit" name="sub1">
+	</form>
+	 {{ error_message_login }}
+    <br>
+	<h3>
+      Create new account below.
+    </h3>
+	</h5>
+		Username:
+	</h5>
+    <form action="/auth/register">
+      <input type="text" name="new_username">
+	<br>
+	</h5>
+		Password:
+	</h5>
+	<br>
+      <input type="text" name="new_password">
+	<br>
+	<form action="/auth">
+		<input type="submit" name="sub2">
+	</form>
+	{{ error_message_register }}
+    <br>
+
+  </body>
+
+</html>
