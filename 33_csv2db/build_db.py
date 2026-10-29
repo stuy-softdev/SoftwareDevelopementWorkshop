@@ -1,4 +1,4 @@
-#Clyde "Thluffy" Sinclair
+# The Tallyers: Saxon, Rona, and Marocs
 #Software Development
 #skeleton/stub :: SQLITE3 BASICS
 #Oct 2026
