@@ -63,8 +63,6 @@ for row in studentInfo:
     
 command = "CREATE TABLE IF NOT EXISTS courses(code TEXT, mark INTEGER, id INTEGER)"          # <-- insert tested stmt in quotes
 c.execute(command) 
-studentInfo = CSV_to_DB('students-beeg.csv')
-
 courseInfo = CSV_to_DB('courses-beeg.csv')
 for row in courseInfo:
     code = row['code']
@@ -73,38 +71,50 @@ for row in courseInfo:
     command = "INSERT INTO courses (code,mark,id) VALUES (?,?,?)"
     c.execute(command, (code,mark,course_id))
     
-print("STUDENTS TABLE")
-c.execute("SELECT * FROM students")
-students_data = c.fetchall()
-for row in students_data:
-    print(row)
-
-print("COURSES TABLE")
-c.execute("SELECT * FROM courses")
-courses_data = c.fetchall()
-for row in courses_data:
-    print(row)
+# print("STUDENTS TABLE")
+# c.execute("SELECT * FROM students")
+# students_data = c.fetchall()
+# for row in students_data:
+#     print(row)
+# 
+# print("COURSES TABLE")
+# c.execute("SELECT * FROM courses")
+# courses_data = c.fetchall()
+# for row in courses_data:
+#     print(row)
     
-print("Students over age 50")
-c.execute("SELECT * FROM students WHERE age > 50")
-courses_data = c.fetchall()
-for row in courses_data:
-    print(row)
-
-def student_grades(name):
-#     student = ""
-#     for row in studentInfo:
-#         if row['id'] = ID:
-#             student = row['name']
-    for row in studentInfo:
-        if row['name'] = name:
-            ID = row['id']
-    for row in courseInfo:
-        if row['id'] = ID:
-            print(row['name'] + ": " + row['mark'])
+# print("Students over age 50")
+# c.execute("SELECT * FROM students WHERE age > 50")
+# courses_data = c.fetchall()
+# for row in courses_data:
+#     print(row)
     
+# print("given ID example")
+# ID = "0"
+# print(ID)
+# for row in courseInfo:
+#     if row['id'] == ID:
+#         print(row['code'] + ": " + row['mark'])
+        
+print("given name example")
+name = "nikola"
+print(name)
+for row in studentInfo:
+    if row['name'] == name:       
+        ID = row['id']
+for row in courseInfo:
+    if row['id'] == ID:
+        print(row['code'] + ": " + row['mark'])
 
-
+command = "CREATE TABLE IF NOT EXISTS course_info(code primary key, mark TEXT, credits INTEGER, department TEXT)"
+c.execute(command)    # run SQL statement
+for row in courseInfo:
+    code = row['code']
+    mark = row['mark']
+    course_id = row['id']
+    command = "INSERT INTO course_info (code,mark,id) VALUES (?,?,?)"
+    c.execute(command, (code,mark,course_id))
+    
 
 #==========================================================
 
