@@ -1,6 +1,6 @@
-# The Tallyers: Saxon, Rona, and Marocs
+# The Tallyers: Saxon and Joshua
 #Software Development
-#skeleton/stub :: SQLITE3 BASICS
+# K34 -- More Tables More Problems
 #Oct 2026
 
 import sqlite3   #enable control of an sqlite database
@@ -8,8 +8,7 @@ import csv       #facilitate CSV I/O
 
 
 DB_FILE="discobandit.db"
-
-db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+db = sqlite3.connect(DB_FILE)
 c = db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
 
 #==========================================================
@@ -73,7 +72,7 @@ for row in courseInfo:
     
 # print("STUDENTS TABLE")
 # c.execute("SELECT * FROM students")
-# students_data = c.fetchall()
+# students_data = c.fetchall(
 # for row in students_data:
 #     print(row)
 # 
@@ -88,7 +87,9 @@ for row in courseInfo:
 # courses_data = c.fetchall()
 # for row in courses_data:
 #     print(row)
-    
+
+# print("All grades of student")
+
 # print("given ID example")
 # ID = "0"
 # print(ID)
@@ -96,26 +97,46 @@ for row in courseInfo:
 #     if row['id'] == ID:
 #         print(row['code'] + ": " + row['mark'])
         
-print("given name example")
-name = "nikola"
-print(name)
-for row in studentInfo:
-    if row['name'] == name:       
-        ID = row['id']
-for row in courseInfo:
-    if row['id'] == ID:
-        print(row['code'] + ": " + row['mark'])
+# print("given name example")
+# name = "nikola"
+# print(name)
+# for row in studentInfo:
+#     if row['name'] == name:       
+#         ID = row['id']
+# for row in courseInfo:
+#     if row['id'] == ID:
+#         print(row['code'] + ": " + row['mark'])
 
-command = "CREATE TABLE IF NOT EXISTS course_info(code primary key, mark TEXT, credits INTEGER, department TEXT)"
-c.execute(command)    # run SQL statement
-for row in courseInfo:
-    code = row['code']
-    mark = row['mark']
-    course_id = row['id']
-    command = "INSERT INTO course_info (code,mark,id) VALUES (?,?,?)"
-    c.execute(command, (code,mark,course_id))
-    
 
+# print("all students in a course")
+# course = "bio"
+# 
+# command = "SELECT students.name FROM students JOIN courses ON students.id = courses.id WHERE courses.code = ?"
+# c.execute(command, (course,))
+# 
+# courses_data = c.fetchall()
+# 
+# for row in courses_data:
+#     print(row)
+
+print("course_info table")
+
+command = "CREATE TABLE IF NOT EXISTS course_info (code TEXT PRIMARY KEY, title TEXT, credits INTEGER, dept TEXT)"
+c.execute(command)
+
+course_data = [
+    ("softdev", "Software Development", 3, "Computer Science"),
+    ("ethics", "Ethics", 3, "Humanities"),
+    ("bio", "Biology", 4, "Science")
+]
+
+command = "INSERT OR IGNORE INTO course_info (code, title, credits, dept) VALUES (?, ?, ?, ?)"
+c.executemany(command, course_data)
+
+c.execute("SELECT * FROM course_info")
+course_info_data = c.fetchall()
+for row in course_info_data:
+    print(row)
 #==========================================================
 
 db.commit() #save changes
