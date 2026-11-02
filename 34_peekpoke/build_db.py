@@ -119,24 +119,25 @@ for row in courseInfo:
 # for row in courses_data:
 #     print(row)
 
-print("course_info table")
+# print("course_info table")
+# 
+# command = "CREATE TABLE IF NOT EXISTS course_info (code TEXT PRIMARY KEY, title TEXT, credits INTEGER, dept TEXT)"
+# c.execute(command)
+# 
+# course_data = [
+#     ("softdev", "Software Development", 3, "Computer Science"),
+#     ("ethics", "Ethics", 3, "Humanities"),
+#     ("bio", "Biology", 4, "Science")
+# ]
+# 
+# command = "INSERT OR IGNORE INTO course_info (code, title, credits, dept) VALUES (?, ?, ?, ?)"
+# c.executemany(command, course_data)
+# 
+# c.execute("SELECT * FROM course_info")
+# course_info_data = c.fetchall()
+# for row in course_info_data:
+#     print(row)
 
-command = "CREATE TABLE IF NOT EXISTS course_info (code TEXT PRIMARY KEY, title TEXT, credits INTEGER, dept TEXT)"
-c.execute(command)
-
-course_data = [
-    ("softdev", "Software Development", 3, "Computer Science"),
-    ("ethics", "Ethics", 3, "Humanities"),
-    ("bio", "Biology", 4, "Science")
-]
-
-command = "INSERT OR IGNORE INTO course_info (code, title, credits, dept) VALUES (?, ?, ?, ?)"
-c.executemany(command, course_data)
-
-c.execute("SELECT * FROM course_info")
-course_info_data = c.fetchall()
-for row in course_info_data:
-    print(row)
 #==========================================================
 
 db.commit() #save changes
