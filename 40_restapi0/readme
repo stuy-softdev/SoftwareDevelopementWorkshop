@@ -1,0 +1,53 @@
+**urllib**
+  - fetches URLS through urlopen function (simple)
+  - complex interface: authentication, cookies, proxies, etc.
+    - providd by objects called handlers and openers
+  - URL scheme comes before colon in URL (ex. http, https, ftp, etc.)
+
+  - req = urllib.request.Request('http://python.org/') --> creates a Request object
+  - urllib.request.urlopen(URL) --> retrieves the information from URL
+  - .read() --> reads the information in the URL
+  - urllib.error.URLError --> an exception that arises due to no network connection or nonexistent server
+    - urllib.error.URLError.reason returns the reason for the error
+  - HTTPError: 404 (page not found), 403 (request forbidden), 401 (authentication required)
+    - All HTTPErrors have numeric status codes.
+
+**json**
+  - dumps: encodes Python objects (strings, lists, dictionaries, etc.) to JSON data
+    - dump: dumps, but it encodes to file-like object fp
+  - load: decodes JSON data in file-like object fp to Python objects
+    - loads: load, but it decodes s (str, bytes, bytearray, etc.) instead of file-like objects
+
+Json Decode:
+| JSON | Python |
+| --- | --- |
+| object | dict |
+| array | list |
+| string | str |
+| number (int) | int |
+| number (real) | float |
+| true | True |
+| false | False |
+| null | None |
+
+Json Encode:
+| Python | JSON |
+| --- | --- |
+| dict, frozendict | object |
+| list, tuple | array |
+| str | string |
+| int, float, int- & float-derived Enums | number |
+| True | true |
+| False | false |
+| None | null |
+
+Simple way of fetching urls: opening the url with urllib.request, and reading the response
+
+loads(dumps(x)) != x
+
+HTTP Request:
+- Whenever the server runs into an Internal Server Error, it returns as an exception.
+- Internal Server Errors are, as the name suggests, internal and therefore don't require much else from the user. Instead, they should just retry until the server responds.
+- It returns a JSON object rather than a typical string. It's more like a dictionary, if anything, listing things like date as the key and tomorrow's date as the value.
+
+**Concern**: Is the image url supposed to just be the NASA logo? I'm ASSUMING it's because it's the image for 11/25, and I tested this on 11/24. I'm not entirely sure, though.
